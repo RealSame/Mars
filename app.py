@@ -28,8 +28,6 @@ def web_mars_post():
 
     db.orders.insert_one(doc)
 
-    return jsonify({'msg': 'Complete!'})
-
 @app.route("/mars", methods=["GET"])
 def web_mars_get():
     orders_list = list(db.orders.find({},{'_id':False}))

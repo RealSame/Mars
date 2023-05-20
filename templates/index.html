@@ -73,14 +73,22 @@
                         let name = rows[i]['name']
                         let address = rows[i]['address']
                         let size = rows[i]['size']
-                        
+
+        var sanitizeHTML = function (str) {
+            return str.replace(/[^\w. ]/gi, function (c) {
+                return '&#' + c.charCodeAt(0) + ';';
+            });
+        };        
+
                         let temp_html = `<tr>
-                                    <td>${name}</td>
-                                    <td>${address}</td>
-                                    <td>${size}</td>
+                                    <td>${sanitizeHTML(name)}</td>
+                                    <td>${sanitizeHTML(address)}</td>
+                                    <td>${sanitizeHTML(size)}</td>
                                 </tr>`
                         $('#orders-box').append(temp_html)
                     }
+
+
 
                 }
             });
